@@ -12,7 +12,8 @@ class App extends Component {
   state = {
     allArtwork: [],
     usersArtwork: [],
-    currentUser: {}
+    currentUser: {},
+    visit: null
   }
 
   componentDidMount() {
@@ -41,6 +42,32 @@ class App extends Component {
     })
   }
 
+  handleCreateVisit = (newVisitData) => {
+      // {date: Mon Feb 11 2019 18:34:54 GMT-0500 (Eastern Standard Time),
+      //  timeOfDay: "afternoon"}
+      const data = {
+        date: newVisitData.date,
+        time_of_day: newVisitData.timeOfDay,
+        user: this.state.currentUser
+      }
+      
+
+    fetch('http://localhost:3000/visits', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(newVisit => {
+        console.log(newVisit)
+        // this.setState({
+        //   allPokemon: [...this.state.allPokemon, newPokemon]
+        // })
+      })
+  }
 
 
 
@@ -50,6 +77,7 @@ class App extends Component {
         <NavBar />
         <Route exact path='/' component={() => { return (<HomePage
             currentUser={this.state.currentUser}
+            createVisit={this.handleCreateVisit}
             />)
           }}
         />
