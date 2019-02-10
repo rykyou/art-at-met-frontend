@@ -3,7 +3,7 @@ import React from 'react';
 const ArtCard = (props) => {
   return (
     <div className="" onClick={() => console.log('clicked ArtCard!')}>
-      <h5>ArtCard</h5>
+      <h3>{props.artwork.title}</h3>
     </div>
   )
 }

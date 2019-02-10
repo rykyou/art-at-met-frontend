@@ -9,6 +9,7 @@ import VisitsPage from './VisitsPage'
 import ProfilePage from './ProfilePage'
 
 class App extends Component {
+  
   render() {
     return (
       <div className="App">

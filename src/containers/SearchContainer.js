@@ -9,7 +9,7 @@ class SearchContainer extends Component {
         <h1>SearchContainer</h1>
         <SearchForm />
         <h3>All art:</h3>
-        <ArtworksList />
+        <ArtworksList artworkArray={this.props.artworkArray}/>
       </div>
     );
   }
