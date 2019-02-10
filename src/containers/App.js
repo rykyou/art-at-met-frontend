@@ -59,12 +59,16 @@ class App extends Component {
             />)
           }}
         />
-        <Route exact path='/visits' component={VisitsPage}/>
+        <Route exact path='/visits' component={() => { return (<VisitsPage
+            currentUser={this.state.currentUser}
+            />)
+          }}
+        />
         <Route exact path='/profile' component={ProfilePage}/>
       </div>
     );
   }
 }
-// () => { return (<HomePage user={this.state.currentUser}/>)
+
 
 export default App;
