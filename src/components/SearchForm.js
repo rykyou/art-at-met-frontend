@@ -31,11 +31,11 @@ class SearchForm extends React.Component {
       <div>
         <h3>Filter Search</h3>
         <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-            <input label="Name" placeholder="Name" name="name" />
-            <input label="hp" placeholder="hp" name="hp" />
-            <input label="Front Image URL" placeholder="url" name="frontUrl" />
-            <input label="Back Image URL" placeholder="url" name="backUrl" />
-          <button>Submit</button>
+            <input label="title" placeholder="Artwork Title" name="title" />
+            <input label="medium" placeholder="Medium" name="medium" />
+            <input label="artistName" placeholder="Artist Name" name="artistName" />
+            <input label="Era" placeholder="Date/Era" name="era" />
+          <button>Search</button>
         </form>
       </div>
     )
