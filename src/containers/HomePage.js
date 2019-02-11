@@ -12,11 +12,11 @@ class HomePage extends Component {
           <VisitsList currentUser={this.props.currentUser} />
         </div>
 
-        <div class="seven wide column">
+        <div className="seven wide column">
           <FavoritesList currentUser={this.props.currentUser}/>
         </div>
 
-        <div class="nine wide column">
+        <div className="nine wide column">
           <VisitLogger createVisit={this.props.createVisit}/>
         </div>
       </div>
