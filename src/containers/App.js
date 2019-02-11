@@ -100,13 +100,40 @@ class App extends Component {
     })
   }
 
-  // setCurrentVisit = (visitId) => {
-  //   let visitObj = this.state.allVisits.find(visit => visit.id === visitId)
-  //   let copyOfArtworks = [...visitObj.artworks]
-  //   this.setState({
-  //     currentVisitArtworks: copyOfArtworks
-  //   })
-  // }
+  handleAddArtwork = (artworkObj, visitId) => {
+    console.log('attempting to add', artworkObj, "to user's list")
+    const data = {
+      artwork_id: artworkObj.id,
+      visit_id: visitId
+    }
+
+    fetch(`http://localhost:3000/api/v1/visits/${visitId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(editedVisit => {
+        // console.log(editedVisit)
+        // console.log(this.props.allVisits)
+        let copyOfAllVisits = [...this.state.allVisits]
+        copyOfAllVisits[editedVisit.id] = editedVisit
+        console.log(this.state.allVisits)
+        console.log(copyOfAllVisits)
+
+        // let copyOfVisitToEdit = [...visitToEdit]
+        // copyOfVisitToEdit
+        this.setState({
+          currentUser: {
+            ...this.state.currentUser,
+            visits: copyOfAllVisits
+          }
+        })
+      })
+  }
 
 
   render() {
@@ -121,20 +148,20 @@ class App extends Component {
             />)
           }}
         />
-      <Route exact path='/visits/:visitId/edit' render={(props) => {
-          const visitIdInUrl = parseInt(props.match.params.visitId)
-          let visit = this.state.allVisits.find(visitObj => visitObj.id === visitIdInUrl ) //visitObj.id === visitIdInUrl})
-          // console.log('visit:', visit)
-          return (<EditVisitPage
-            allArtwork={this.state.allArtwork}
-            allVisits={this.state.allVisits}
-            currentVisit={visit}
-            currentVisitArtworks={this.state.currentVisitArtworks}
-            />)
-          }}
-        />
 
-
+        <Route exact path='/visits/:visitId/edit' render={(props) => {
+            const visitIdInUrl = parseInt(props.match.params.visitId)
+            let visit = this.state.allVisits.find(visitObj => visitObj.id === visitIdInUrl ) //visitObj.id === visitIdInUrl})
+            // console.log('visit:', visit)
+            return (<EditVisitPage
+              allArtwork={this.state.allArtwork}
+              allVisits={this.state.allVisits}
+              currentVisit={visit}
+              currentVisitArtworks={this.state.currentVisitArtworks}
+              handleAddArtwork={this.handleAddArtwork}
+              />)
+            }}
+          />
 
         <Route exact path='/visits' component={() => { return (<VisitsPage
             currentUser={this.state.currentUser}

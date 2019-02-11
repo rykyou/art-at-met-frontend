@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArtworksList from './ArtworksList';
+import AllArtworksList from './AllArtworksList';
 import SearchForm from '../components/SearchForm';
 
 class SearchContainer extends Component {
@@ -10,7 +10,10 @@ class SearchContainer extends Component {
         <SearchForm />
         <h3>All art:</h3>
         <div className="horizontal-scroll">
-          <ArtworksList artworkArray={this.props.artworkArray}/>
+          <AllArtworksList
+            artworkArray={this.props.artworkArray}
+            handleArtworkClick={this.props.handleArtworkClick}
+          />
         </div>
       </div>
     );
