@@ -7,7 +7,7 @@ class VisitLogger extends React.Component {
     super(props);
     this.state = {
       date: new Date(),
-      timeOfDay: ''
+      timeOfDay: 'Morning'
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTimeChange = this.handleTimeChange.bind(this);

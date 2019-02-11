@@ -57,14 +57,13 @@ class App extends Component {
   handleCreateVisit = (newVisitData) => {
       // {date: Mon Feb 11 2019 18:34:54 GMT-0500 (Eastern Standard Time),
       //  timeOfDay: "afternoon"}
-      const copyOfUser = this.state.currentUser
+      const formattedTimeOfDay = newVisitData.timeOfDay.charAt(0).toUpperCase() + newVisitData.timeOfDay.slice(1)
+      const userId = this.state.currentUser.id
       const data = {
         date: newVisitData.date,
-        time_of_day: newVisitData.timeOfDay,
-        user: copyOfUser
+        time_of_day: formattedTimeOfDay,
+        user_id: userId
       }
-      console.log(data)
-
 
     fetch('http://localhost:3000/api/v1/visits', {
         method: 'POST',
@@ -76,10 +75,13 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(newVisit => {
-        console.log(newVisit)
-        // this.setState({
-        //   allVisits: [...this.state.allVisits, newVisit]
-        // })
+        // console.log(newVisit)
+        this.setState({
+          currentUser: {
+            ...this.state.currentUser,
+            visits: [...this.state.currentUser.visits, newVisit]
+          }
+        })
       })
   }
 

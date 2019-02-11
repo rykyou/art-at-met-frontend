@@ -29,11 +29,11 @@ class EditVisitPage extends Component {
           <ArtworksList artworkArray={this.props.allArtwork}/>
         </div>
 
-        <div class="six wide column">
+        <div className="six wide column">
           <ArtDetails />
         </div>
 
-        <div class="ten wide column">
+        <div className="ten wide column">
           <SearchContainer artworkArray={this.props.allArtwork}/>
         </div>
       </div>
