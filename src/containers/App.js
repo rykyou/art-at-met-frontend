@@ -13,11 +13,13 @@ class App extends Component {
     allArtwork: [],
     usersArtwork: [],
     currentUser: {},
+    allVisits: [],
     visit: null
   }
 
   componentDidMount() {
     this.getAllArtwork()
+    this.getAllVisits()
     this.getCurrentUser()
   }
 
@@ -27,6 +29,16 @@ class App extends Component {
     .then(data => {
       this.setState({
         allArtwork: data
+      })
+    })
+  }
+
+  getAllVisits = () => {
+    fetch('http://localhost:3000/api/v1/visits')
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        allVisits: data
       })
     })
   }
@@ -66,10 +78,11 @@ class App extends Component {
       .then(newVisit => {
         console.log(newVisit)
         // this.setState({
-        //   allPokemon: [...this.state.allPokemon, newPokemon]
+        //   allVisits: [...this.state.allVisits, newVisit]
         // })
       })
   }
+
 
 
 
@@ -83,9 +96,12 @@ class App extends Component {
             />)
           }}
         />
-        <Route exact path='/visits/:visitId/edit' component={() => { return (<EditVisitPage
+      <Route exact path='/visits/:visitId/edit' render={(props) => {
+          let visitIdInUrl = props.match.params.visitId
+          return (<EditVisitPage
             allArtwork={this.state.allArtwork}
-            usersArtwork={this.state.usersArtwork}
+            allVisits={this.state.allVisits}
+            visitId={visitIdInUrl}
             />)
           }}
         />

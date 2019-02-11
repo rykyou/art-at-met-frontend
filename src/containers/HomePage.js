@@ -6,13 +6,19 @@ import VisitLogger from '../components/VisitLogger';
 class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div className="ui grid">
         <h1>HomePage</h1>
-        <VisitsList currentUser={this.props.currentUser} />
+        <div className="sixteen wide column">
+          <VisitsList currentUser={this.props.currentUser} />
+        </div>
 
-        <FavoritesList currentUser={this.props.currentUser}/>
+        <div class="seven wide column">
+          <FavoritesList currentUser={this.props.currentUser}/>
+        </div>
 
-        <VisitLogger createVisit={this.props.createVisit}/>
+        <div class="nine wide column">
+          <VisitLogger createVisit={this.props.createVisit}/>
+        </div>
       </div>
     );
   }

@@ -30,3 +30,14 @@
     transform: rotate(360deg);
   }
 }
+
+.vertical-scroll {
+  overflow-y: scroll;
+  max-height: 300px;
+}
+
+.horizontal-scroll {
+  overflow-y: auto;
+  max-height: 700px;
+  margin-top: 40px;
+}
