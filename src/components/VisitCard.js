@@ -9,7 +9,7 @@ const VisitCard = (props) => {
 
       <div className="ui buttons">
         <Link className="tiny ui button"
-          onClick={() => props.setCurrentVisit(props.visit.id)}
+          
           to={`/visits/${props.visit.id}/edit`}
           key={props.visit.id}>
             <div>Edit</div>
@@ -24,10 +24,5 @@ function formatDate(visit_date) {
   const date = new Date(visit_date)
   return date.toLocaleDateString("en-US")
 }
-
-// function handleVisitCardClick(props) {
-//   console.log('clicked VisitCard!')
-//
-// }
 
 export default VisitCard

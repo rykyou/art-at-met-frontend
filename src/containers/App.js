@@ -11,10 +11,8 @@ import ProfilePage from './ProfilePage'
 class App extends Component {
   state = {
     allArtwork: [],
-    usersArtwork: [],
     currentUser: {},
-    allVisits: [],
-    currentVisit: {}
+    allVisits: []
   }
 
   componentDidMount() {
@@ -102,13 +100,13 @@ class App extends Component {
     })
   }
 
-  setCurrentVisit = (visitId) => {
-    let visitObj = this.state.currentUser.visits.find(visit => visit.id === visitId)
-    
-    this.setState({
-      currentVisit: visitObj
-    })
-  }
+  // setCurrentVisit = (visitId) => {
+  //   let visitObj = this.state.allVisits.find(visit => visit.id === visitId)
+  //   let copyOfArtworks = [...visitObj.artworks]
+  //   this.setState({
+  //     currentVisitArtworks: copyOfArtworks
+  //   })
+  // }
 
 
   render() {
@@ -124,14 +122,20 @@ class App extends Component {
           }}
         />
       <Route exact path='/visits/:visitId/edit' render={(props) => {
-          let visitIdInUrl = props.match.params.visitId
+          const visitIdInUrl = parseInt(props.match.params.visitId)
+          let visit = this.state.allVisits.find(visitObj => visitObj.id === visitIdInUrl ) //visitObj.id === visitIdInUrl})
+          // console.log('visit:', visit)
           return (<EditVisitPage
             allArtwork={this.state.allArtwork}
             allVisits={this.state.allVisits}
-            visitId={visitIdInUrl}
+            currentVisit={visit}
+            currentVisitArtworks={this.state.currentVisitArtworks}
             />)
           }}
         />
+
+
+
         <Route exact path='/visits' component={() => { return (<VisitsPage
             currentUser={this.state.currentUser}
             />)
