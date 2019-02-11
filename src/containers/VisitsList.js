@@ -1,17 +1,14 @@
 import React from 'react';
 import VisitCard from '../components/VisitCard';
-import { Link } from 'react-router-dom'
 
 class VisitsList extends React.Component {
   userPastVisits = () => {
-    return this.props.currentUser.visits.map(visit => <Link
-      to={`/visits/${visit.id}/edit`}
-      key={visit.id}>
-        <VisitCard
-          key={visit.id}
-          visit={visit}
-        />
-    </Link>)
+    return this.props.currentUser.visits.map(visit => <VisitCard
+        key={visit.id}
+        visit={visit}
+        handleDeleteVisit={this.props.handleDeleteVisit}
+        setCurrentVisit={this.props.setCurrentVisit}
+      />)
   }
 
   render() {

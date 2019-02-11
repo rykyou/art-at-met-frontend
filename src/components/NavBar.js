@@ -6,7 +6,7 @@ const NavBar = (props) => {
   return(
     <div className="ui red inverted menu">
       <Link to='/' className="item">
-        <img src={logo} />
+        <img src={logo} alt="MET logo"/>
       </Link>
       <Link to="/" className="item">Home</Link>
       <Link to="/profile" className="item">Profile</Link>

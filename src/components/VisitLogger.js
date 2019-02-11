@@ -44,7 +44,7 @@ class VisitLogger extends React.Component {
   render() {
     return (
       <div>
-        <h3>Filter Search</h3>
+        <h3>Log a Visit:</h3>
 
         <DatePicker
         selected={this.state.date}

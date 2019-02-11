@@ -9,7 +9,11 @@ class HomePage extends Component {
       <div className="ui grid">
         <h1>HomePage</h1>
         <div className="sixteen wide column">
-          <VisitsList currentUser={this.props.currentUser} />
+          <VisitsList
+            currentUser={this.props.currentUser}
+            handleDeleteVisit={this.props.handleDeleteVisit}
+            setCurrentVisit={this.props.setCurrentVisit}
+          />
         </div>
 
         <div className="seven wide column">

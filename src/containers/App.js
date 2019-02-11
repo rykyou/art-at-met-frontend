@@ -14,7 +14,7 @@ class App extends Component {
     usersArtwork: [],
     currentUser: {},
     allVisits: [],
-    visit: null
+    currentVisit: {}
   }
 
   componentDidMount() {
@@ -85,7 +85,30 @@ class App extends Component {
       })
   }
 
+  handleDeleteVisit = (visitId) => {
+    fetch(`http://localhost:3000/api/v1/visits/${visitId}`, {
+        method: 'DELETE',
+    })
 
+    let copyOfVisits = [...this.state.currentUser.visits]
+    let index = copyOfVisits.findIndex(visit => visit.id === visitId)
+    copyOfVisits.splice(index, 1)
+
+    this.setState({
+      currentUser: {
+        ...this.state.currentUser,
+        visits: copyOfVisits
+      }
+    })
+  }
+
+  setCurrentVisit = (visitId) => {
+    let visitObj = this.state.currentUser.visits.find(visit => visit.id === visitId)
+    
+    this.setState({
+      currentVisit: visitObj
+    })
+  }
 
 
   render() {
@@ -95,6 +118,8 @@ class App extends Component {
         <Route exact path='/' component={() => { return (<HomePage
             currentUser={this.state.currentUser}
             createVisit={this.handleCreateVisit}
+            handleDeleteVisit={this.handleDeleteVisit}
+            setCurrentVisit={this.setCurrentVisit}
             />)
           }}
         />
