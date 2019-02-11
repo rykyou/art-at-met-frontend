@@ -2,7 +2,7 @@ import React from 'react';
 
 const ArtCard = ({artwork}) => {
   return (
-    <div class="column">
+    <div className="column">
       <div className="ui link fluid card" onClick={() => console.log('clicked ArtCard!')}>
           <div className="image">
             <img src={artwork.img_small} alt={artwork.title}/>
