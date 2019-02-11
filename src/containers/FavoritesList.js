@@ -19,7 +19,11 @@ class FavoritesList extends React.Component {
     return (
       <div>
         <h2>FavoritesList!</h2>
+        <div class="ui three column grid">
+          
         {!(this.props.currentUser.artworks === undefined) ? this.favoriteArtworks() : null}
+
+      </div>
       </div>
     )
   }

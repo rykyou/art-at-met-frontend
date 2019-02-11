@@ -45,14 +45,16 @@ class App extends Component {
   handleCreateVisit = (newVisitData) => {
       // {date: Mon Feb 11 2019 18:34:54 GMT-0500 (Eastern Standard Time),
       //  timeOfDay: "afternoon"}
+      const copyOfUser = this.state.currentUser
       const data = {
         date: newVisitData.date,
         time_of_day: newVisitData.timeOfDay,
-        user: this.state.currentUser
+        user: copyOfUser
       }
-      
+      console.log(data)
 
-    fetch('http://localhost:3000/visits', {
+
+    fetch('http://localhost:3000/api/v1/visits', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

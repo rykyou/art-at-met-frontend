@@ -9,7 +9,9 @@ class HomePage extends Component {
       <div>
         <h1>HomePage</h1>
         <VisitsList currentUser={this.props.currentUser} />
+
         <FavoritesList currentUser={this.props.currentUser}/>
+
         <VisitLogger createVisit={this.props.createVisit}/>
       </div>
     );
