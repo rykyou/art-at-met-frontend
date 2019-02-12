@@ -43,6 +43,7 @@ class EditVisitPage extends Component {
             currentArtwork={this.state.currentArtwork}
             handleAddArtwork={this.props.handleAddArtwork}
             handleClearArtDetails={this.handleClearArtDetails}
+            handleRemoveArtwork={this.props.handleRemoveArtwork}
           />
         </div>
 

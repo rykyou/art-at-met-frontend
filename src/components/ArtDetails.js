@@ -10,15 +10,25 @@ class ArtDetails extends React.Component {
     if ((this.props.currentArtwork !== {}) && this.props.currentVisit.artworks.includes(this.props.currentArtwork)) {
       return (
         <div>
-          <button className="ui right button"
-              onClick={() => console.log('attempting to edit')}>Update Notes</button>
-          <button className="ui right button" onClick={() => console.log('attempting to delete')}>Remove</button>
+          <button
+            className="ui button"
+            onClick={() => console.log('attempting to edit')}
+            >Update Notes
+          </button>
+          <button
+            className="ui right button"
+            onClick={() => this.props.handleRemoveArtwork(this.props.currentArtwork, this.props.currentVisit.id)}
+            >Remove
+          </button>
         </div>
     )} else {
       return (
         <div>
-          <button className="ui right button"
-            onClick={() => this.handleAddArtworkClick(this.props.currentArtwork, this.props.currentVisit.id)}>Add</button>
+          <button
+            className="ui button"
+            onClick={() => this.handleAddArtworkClick(this.props.currentArtwork, this.props.currentVisit.id)}
+            >Add
+          </button>
         </div>
     )}
   }

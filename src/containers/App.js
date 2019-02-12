@@ -100,7 +100,7 @@ class App extends Component {
   }
 
   handleAddArtwork = (artworkObj, visitId) => {
-    console.log('attempting to add', artworkObj, "to user's list")
+    console.log('attempting to ADD', artworkObj, "to user's list")
     const data = {
       artwork_id: artworkObj.id,
       visit_id: visitId
@@ -124,6 +124,15 @@ class App extends Component {
           currentUser: copyOfUser
         })
       })
+  }
+
+  handleRemoveArtwork = (artworkObj, visitId) => {
+    console.log('attempting to REMOVE', artworkObj, "from user's list")
+
+    // fetch(`http://localhost:3000/api/v1/visits/${visitId}/artworks/${artworkObj.id}`, {
+    //     method: 'DELETE'
+    // })
+
   }
 
 
@@ -151,6 +160,7 @@ class App extends Component {
               currentVisit={visit}
               currentVisitArtworks={this.state.currentVisitArtworks}
               handleAddArtwork={this.handleAddArtwork}
+              handleRemoveArtwork={this.handleRemoveArtwork}
               />)
             }}
           />
