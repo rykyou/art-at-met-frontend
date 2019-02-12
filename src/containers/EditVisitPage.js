@@ -14,6 +14,12 @@ class EditVisitPage extends Component {
     })
   }
 
+  handleClearArtDetails = () => {
+    this.setState({
+      currentArtwork: {}
+    })
+  }
+
 
   render() {
     return (
@@ -36,6 +42,7 @@ class EditVisitPage extends Component {
             currentVisit={this.props.currentVisit}
             currentArtwork={this.state.currentArtwork}
             handleAddArtwork={this.props.handleAddArtwork}
+            handleClearArtDetails={this.handleClearArtDetails}
           />
         </div>
 

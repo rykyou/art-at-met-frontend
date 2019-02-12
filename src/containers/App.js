@@ -73,7 +73,6 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(newVisit => {
-        // console.log(newVisit)
         this.setState({
           currentUser: {
             ...this.state.currentUser,
