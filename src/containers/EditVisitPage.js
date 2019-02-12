@@ -5,7 +5,7 @@ import SearchContainer from './SearchContainer';
 
 class EditVisitPage extends Component {
   state = {
-    currentArtwork: {}
+    currentArtwork: null
   }
 
   handleArtworkClick = (artworkObj) => {
@@ -16,7 +16,7 @@ class EditVisitPage extends Component {
 
   handleClearArtDetails = () => {
     this.setState({
-      currentArtwork: {}
+      currentArtwork: null
     })
   }
 
@@ -39,13 +39,15 @@ class EditVisitPage extends Component {
         </div>
 
         <div className="six wide column">
-          <ArtDetails
-            currentVisit={this.props.currentVisit}
-            currentArtwork={this.state.currentArtwork}
-            handleAddArtwork={this.props.handleAddArtwork}
-            handleClearArtDetails={this.handleClearArtDetails}
-            handleRemoveArtwork={this.props.handleRemoveArtwork}
-          />
+          {this.state.currentArtwork ?
+            <ArtDetails
+              currentVisit={this.props.currentVisit}
+              currentArtwork={this.state.currentArtwork}
+              handleAddArtwork={this.props.handleAddArtwork}
+              handleClearArtDetails={this.handleClearArtDetails}
+              handleRemoveArtwork={this.props.handleRemoveArtwork}
+            />
+          : null }
         </div>
 
         <div className="ten wide column">

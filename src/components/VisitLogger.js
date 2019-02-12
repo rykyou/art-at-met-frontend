@@ -1,40 +1,26 @@
-import React from 'react'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-// import { DateInput } from 'semantic-ui-calendar-react';
+import React from 'react';
+import { Form, Dropdown, Grid, Header } from 'semantic-ui-react';
+import { DateInput } from 'semantic-ui-calendar-react';
 
 class VisitLogger extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       date: new Date(),
       timeOfDay: 'Morning'
     };
-    this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleTimeChange = this.handleTimeChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleDateChange(date) {
-    this.setState({
-      date: date
-    });
+  handleDateChange = (event, {name, value}) => {
+    if (this.state.hasOwnProperty(name)) {
+      this.setState({ [name]: value });
+    }
   }
 
-  handleTimeChange(event) {
-    event.persist()
-    this.setState({
-      timeOfDay: event.target.value
-    });
+  handleTimeChange = (event, data) => {
+    this.setState({timeOfDay: data.value});
   }
-
-  // handleTimeChange = (e) => {
-  //   e.persist()
-  //   // console.log(e.target.name)
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -42,25 +28,50 @@ class VisitLogger extends React.Component {
     e.target.reset()
   }
 
+  timeOptions = [
+    {
+      text: 'Morning',
+      value: 'Morning',
+      image: { avatar: true, src: 'https://www.shareicon.net/data/2016/06/18/596415_sun_512x512.png' },
+    },
+    {
+      text: 'Afternoon',
+      value: 'Afternoon',
+      image: { avatar: true, src: 'https://www.shareicon.net/data/2016/06/18/596415_sun_512x512.png' },
+    },
+    {
+      text: 'Evening',
+      value: 'Evening',
+      image: { avatar: true, src: 'http://cdn.onlinewebfonts.com/svg/img_312366.png' },
+    }
+  ]
+
   render() {
     return (
       <div>
-        <h3>Log a Visit:</h3>
+        <Header as='h1'>Log a Visit:</Header>
+        <Grid>
+          <Grid.Row centered>
+            <Form className="visit" onSubmit={(e) => this.handleSubmit(e)}>
+              <DateInput
+                name="date"
+                placeholder="Date"
+                value={this.state.date}
+                iconPosition="left"
+                onChange={this.handleDateChange}
+              />
 
-        <DatePicker
-        selected={this.state.date}
-        onChange={this.handleDateChange}
-        />
+            <Dropdown placeholder={<i class="clock outline icon"></i>}
+                fluid
+                selection
+                options={this.timeOptions}
+                onChange={this.handleTimeChange}
+              />
 
-        <form onSubmit={this.handleSubmit}>
-          <select value={this.state.timeOfDay} onChange={this.handleTimeChange}>
-            <option value="morning">Morning</option>
-            <option value="afternoon">Afternoon</option>
-            <option value="evening">Evening</option>
-          </select>
-
-          <button>Log!</button>
-        </form>
+              <Form.Button>Submit</Form.Button>
+            </Form>
+          </Grid.Row>
+        </Grid>
       </div>
     )
   }

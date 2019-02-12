@@ -46,7 +46,11 @@ class ArtDetails extends React.Component {
         </div>
         <div class="content">
           <h1 class="ui header spacing">{currentArtwork.title}</h1>
-          <h3 class="ui header spacing">{currentArtwork.artist_name} ({currentArtwork.artist_bio})</h3>
+
+          {currentArtwork.artist_name ?
+            <h3 class="ui header spacing">{currentArtwork.artist_name} ({currentArtwork.artist_bio})</h3>
+          : null }
+          
           <h3 class="ui dividing header"></h3>
 
           <h4>Date: {currentArtwork.object_date}</h4>
