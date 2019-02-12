@@ -26,7 +26,8 @@ class EditVisitPage extends Component {
       <div className="ui grid">
         <h1>EditVisitPage</h1>
         <h3>My list:</h3>
-        <div className="vertical-scroll">
+        <div className="sixteen wide column">
+
           { this.props.currentVisit ?
             <UserArtworksList
               artworkArray={this.props.currentVisit.artworks}

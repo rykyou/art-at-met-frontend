@@ -1,6 +1,7 @@
 import React from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+// import { DateInput } from 'semantic-ui-calendar-react';
 
 class VisitLogger extends React.Component {
   constructor(props) {

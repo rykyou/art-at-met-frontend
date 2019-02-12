@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 const VisitCard = (props) => {
   return (
     <div className="ui link card">
-      <h3>{formatDate(props.visit.date)}</h3>
-      <h5>{props.visit.time_of_day}</h5>
+
+      <h3 class="ui header spacing"><i class="paint brush icon"></i>{`Date: ` + formatDate(props.visit.date)}</h3>
+      <h3 class="ui header spacing">{props.visit.time_of_day}</h3>
 
       <div className="ui buttons">
         <Link className="tiny ui button"
-          
+
           to={`/visits/${props.visit.id}/edit`}
           key={props.visit.id}>
             <div>Edit</div>

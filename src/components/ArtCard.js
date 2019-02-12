@@ -2,8 +2,8 @@ import React from 'react';
 
 const ArtCard = ({artwork, handleArtworkClick}) => {
   return (
-    <div className="column">
-      <div className="ui link fluid card" onClick={() => handleArtworkClick(artwork)}>
+
+      <div className="ui card" onClick={() => handleArtworkClick(artwork)}>
           <div className="image">
             <img src={artwork.img_small} alt={artwork.title}/>
           </div>
@@ -18,7 +18,7 @@ const ArtCard = ({artwork, handleArtworkClick}) => {
             </div>
           </div>
       </div>
-    </div>
+
 
 
 

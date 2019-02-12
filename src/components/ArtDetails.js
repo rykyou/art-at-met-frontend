@@ -6,8 +6,11 @@ class ArtDetails extends React.Component {
     this.props.handleClearArtDetails()
   }
 
+
   buttons = () => {
-    if ((this.props.currentArtwork !== {}) && this.props.currentVisit.artworks.includes(this.props.currentArtwork)) {
+    const { currentArtwork, currentVisit, handleRemoveArtwork } = this.props
+
+    if ((currentArtwork !== {}) && currentVisit.artworks.includes(currentArtwork)) {
       return (
         <div>
           <button
@@ -17,7 +20,7 @@ class ArtDetails extends React.Component {
           </button>
           <button
             className="ui right button"
-            onClick={() => this.props.handleRemoveArtwork(this.props.currentArtwork, this.props.currentVisit.id)}
+            onClick={() => handleRemoveArtwork(currentArtwork, currentVisit.id)}
             >Remove
           </button>
         </div>
@@ -26,7 +29,7 @@ class ArtDetails extends React.Component {
         <div>
           <button
             className="ui button"
-            onClick={() => this.handleAddArtworkClick(this.props.currentArtwork, this.props.currentVisit.id)}
+            onClick={() => this.handleAddArtworkClick(currentArtwork, currentVisit.id)}
             >Add
           </button>
         </div>
@@ -34,14 +37,29 @@ class ArtDetails extends React.Component {
   }
 
   render() {
+    const { currentArtwork } = this.props
     return (
-      <div>
-        <h1>ArtSpecs</h1>
-        <div>
-          <img src={this.props.currentArtwork.img_small} alt={this.props.currentArtwork.title}/>
+
+      <div class="ui fluid card">
+        <div class="image">
+          <img src={currentArtwork.img_small} alt={currentArtwork.title} />
+        </div>
+        <div class="content">
+          <h1 class="ui header spacing">{currentArtwork.title}</h1>
+          <h3 class="ui header spacing">{currentArtwork.artist_name} ({currentArtwork.artist_bio})</h3>
+          <h3 class="ui dividing header"></h3>
+
+          <h4>Date: {currentArtwork.object_date}</h4>
+          <h4>Medium: {currentArtwork.medium}</h4>
+          <h4>Dimensions: {currentArtwork.dimensions}</h4>
+          <h4>Classification: {currentArtwork.classification}</h4>
+
+        </div>
+        <div class="extra content">
           {this.buttons()}
         </div>
       </div>
+
     )
   }
 }

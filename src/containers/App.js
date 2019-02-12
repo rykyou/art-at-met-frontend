@@ -140,7 +140,7 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Route exact path='/' component={() => { return (<HomePage
+        <Route exact path='/' render={() => { return (<HomePage
             currentUser={this.state.currentUser}
             createVisit={this.handleCreateVisit}
             handleDeleteVisit={this.handleDeleteVisit}
@@ -165,12 +165,17 @@ class App extends Component {
             }}
           />
 
-        <Route exact path='/visits' component={() => { return (<VisitsPage
+        <Route exact path='/visits' render={() => { return (<VisitsPage
             currentUser={this.state.currentUser}
             />)
           }}
         />
-        <Route exact path='/profile' component={ProfilePage}/>
+
+        <Route exact path='/profile' render={() => { return (<ProfilePage
+            currentUser={this.state.currentUser}
+            />)
+          }}
+        />
       </div>
     );
   }

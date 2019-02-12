@@ -13,7 +13,7 @@ class VisitsList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ui cards">
         {!(this.props.currentUser.visits === undefined) ? this.userPastVisits() : null}
       </div>
     )
