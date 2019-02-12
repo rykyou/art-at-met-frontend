@@ -32,17 +32,17 @@ class VisitLogger extends React.Component {
     {
       text: 'Morning',
       value: 'Morning',
-      image: { avatar: true, src: 'https://www.shareicon.net/data/2016/06/18/596415_sun_512x512.png' },
+      image: { avatar: true, src: 'https://www.shareicon.net/data/128x128/2015/10/07/652359_star_512x512.png' },
     },
     {
       text: 'Afternoon',
       value: 'Afternoon',
-      image: { avatar: true, src: 'https://www.shareicon.net/data/2016/06/18/596415_sun_512x512.png' },
+      image: { avatar: true, src: 'https://www.shareicon.net/data/128x128/2016/07/14/795832_cloud_512x512.png' },
     },
     {
       text: 'Evening',
       value: 'Evening',
-      image: { avatar: true, src: 'http://cdn.onlinewebfonts.com/svg/img_312366.png' },
+      image: { avatar: true, src: 'https://www.shareicon.net/data/128x128/2016/10/05/839058_moon_512x512.png' },
     }
   ]
 
