@@ -6,9 +6,14 @@ class ArtDetails extends React.Component {
     this.props.handleClearArtDetails()
   }
 
+  handleRemoveArtworkClick = (currentArtwork, currentVisitId) => {
+    this.props.handleRemoveArtwork(currentArtwork, currentVisitId)
+    this.props.handleClearArtDetails()
+  }
+
 
   buttons = () => {
-    const { currentArtwork, currentVisit, handleRemoveArtwork } = this.props
+    const { currentArtwork, currentVisit } = this.props
 
     if ((currentArtwork !== {}) && currentVisit.artworks.includes(currentArtwork)) {
       return (
@@ -20,7 +25,7 @@ class ArtDetails extends React.Component {
           </button>
           <button
             className="ui right button"
-            onClick={() => handleRemoveArtwork(currentArtwork, currentVisit.id)}
+            onClick={() => this.handleRemoveArtworkClick(currentArtwork, currentVisit.id)}
             >Remove
           </button>
         </div>
@@ -50,7 +55,7 @@ class ArtDetails extends React.Component {
           {currentArtwork.artist_name ?
             <h3 class="ui header spacing">{currentArtwork.artist_name} ({currentArtwork.artist_bio})</h3>
           : null }
-          
+
           <h3 class="ui dividing header"></h3>
 
           <h4>Date: {currentArtwork.object_date}</h4>

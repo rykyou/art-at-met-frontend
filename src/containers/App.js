@@ -12,7 +12,6 @@ class App extends Component {
   state = {
     allArtwork: [],
     currentUser: {}
-    // allVisits: []
   }
 
   componentDidMount() {
@@ -30,16 +29,6 @@ class App extends Component {
       })
     })
   }
-
-  // getAllVisits = () => {
-  //   fetch('http://localhost:3000/api/v1/visits')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     this.setState({
-  //       allVisits: data
-  //     })
-  //   })
-  // }
 
   getCurrentUser = () => {
     fetch(`http://localhost:3000/api/v1/users`)
@@ -127,25 +116,21 @@ class App extends Component {
   }
 
   handleRemoveArtwork = (artworkObj, visitId) => {
-    console.log('attempting to REMOVE', artworkObj, "from user's list")
-
     fetch(`http://localhost:3000/api/v1/visits/${visitId}/artworks/${artworkObj.id}`, {
         method: 'DELETE'
     })
 
     let copyOfUser = JSON.parse(JSON.stringify(this.state.currentUser))
     let visitIndex = copyOfUser.visits.findIndex(visit => visit.id === visitId)
-    let copyOfArtworks = JSON.parse(JSON.stringify(copyOfUser.visits[visitIndex].artworks))
+    let copyOfArtworks = copyOfUser.visits[visitIndex].artworks
 
     let artworkToDeleteIndex = copyOfArtworks.findIndex(artwork => artwork.id === artworkObj.id)
     copyOfArtworks.splice(artworkToDeleteIndex, 1)
+    copyOfUser.visits[visitIndex].artworks = copyOfArtworks
 
-    copyOfUser.visits[visitIndex] = copyOfArtworks
-    debugger
     this.setState({
       currentUser: copyOfUser
     })
-
   }
 
 
@@ -164,17 +149,18 @@ class App extends Component {
 
         <Route exact path='/visits/:visitId/edit' render={(props) => {
             const visitIdInUrl = parseInt(props.match.params.visitId)
-            let visit = this.state.currentUser.visits.find(visitObj => visitObj.id === visitIdInUrl )
 
             // console.log('visit:', visit)
-            return (<EditVisitPage
+            return ((this.state.currentUser.visits !== undefined) ? <EditVisitPage
               allArtwork={this.state.allArtwork}
               allVisits={this.state.allVisits}
-              currentVisit={visit}
+              currentVisit={this.state.currentUser.visits.find(visitObj => visitObj.id === visitIdInUrl )}
               currentVisitArtworks={this.state.currentVisitArtworks}
               handleAddArtwork={this.handleAddArtwork}
               handleRemoveArtwork={this.handleRemoveArtwork}
-              />)
+              />
+            :null
+        )
             }}
           />
 
