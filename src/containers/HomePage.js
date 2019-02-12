@@ -6,8 +6,8 @@ class HomePage extends Component {
   render() {
     return (
       <div className="ui grid">
-      
-        <div className="sixteen wide column">
+
+        <div className="sixteen wide column ui raised segment">
           <VisitLogger createVisit={this.props.createVisit}/>
         </div>
         <div className="sixteen wide column">

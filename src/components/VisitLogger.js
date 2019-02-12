@@ -61,7 +61,7 @@ class VisitLogger extends React.Component {
                 onChange={this.handleDateChange}
               />
 
-              <Dropdown placeholder={<i class="clock outline icon"></i>}
+            <Dropdown placeholder={<i className="clock outline icon"></i>}
                 fluid
                 selection
                 options={this.timeOptions}

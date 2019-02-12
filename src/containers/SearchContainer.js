@@ -24,7 +24,7 @@ class SearchContainer extends Component {
 
     return (
       <div>
-        <h1>SearchContainer</h1>
+
         <Grid>
           <Grid.Row centered>
             <Form className="visit" onChange={this.handleSearchChange} onSubmit={this.handleSubmit}>
@@ -35,8 +35,8 @@ class SearchContainer extends Component {
             </Form>
           </Grid.Row>
         </Grid>
-        
-        <h3>All art:</h3>
+
+
         <div className="horizontal-scroll">
           <AllArtworksList
             artworkArray={filteredArtworks}

@@ -89,7 +89,6 @@ class App extends Component {
   }
 
   handleAddArtwork = (artworkObj, visitId) => {
-    console.log('attempting to ADD', artworkObj, "to user's list")
     const data = {
       artwork_id: artworkObj.id,
       visit_id: visitId
@@ -148,21 +147,19 @@ class App extends Component {
         />
 
         <Route exact path='/visits/:visitId/edit' render={(props) => {
-            const visitIdInUrl = parseInt(props.match.params.visitId)
+          const visitIdInUrl = parseInt(props.match.params.visitId)
 
-            // console.log('visit:', visit)
-            return ((this.state.currentUser.visits !== undefined) ? <EditVisitPage
+          return ((this.state.currentUser.visits !== undefined) ? <EditVisitPage
               allArtwork={this.state.allArtwork}
               allVisits={this.state.allVisits}
               currentVisit={this.state.currentUser.visits.find(visitObj => visitObj.id === visitIdInUrl )}
               currentVisitArtworks={this.state.currentVisitArtworks}
               handleAddArtwork={this.handleAddArtwork}
               handleRemoveArtwork={this.handleRemoveArtwork}
-              />
-            :null
-        )
-            }}
-          />
+              /> :null
+          )
+          }}
+        />
 
         <Route exact path='/visits' render={() => { return (<VisitsPage
             currentUser={this.state.currentUser}

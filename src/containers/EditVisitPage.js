@@ -24,12 +24,10 @@ class EditVisitPage extends Component {
   render() {
     return (
       <div className="ui grid">
-        <h1>EditVisitPage</h1>
-        <h3>My list:</h3>
-        <div className="sixteen wide column">
-
+        <div className="ui sixteen wide column segment">
           { this.props.currentVisit ?
             <UserArtworksList
+              currentVisit={this.props.currentVisit}
               artworkArray={this.props.currentVisit.artworks}
               handleArtworkClick={this.handleArtworkClick}
             />
@@ -38,7 +36,7 @@ class EditVisitPage extends Component {
           }
         </div>
 
-        <div className="six wide column">
+        <div className="five wide column segment">
           {this.state.currentArtwork ?
             <ArtDetails
               currentVisit={this.props.currentVisit}
@@ -50,7 +48,8 @@ class EditVisitPage extends Component {
           : null }
         </div>
 
-        <div className="ten wide column">
+        <div className="eleven wide column segment">
+          <h1 class="ui header">MET Collection</h1>
           <SearchContainer
             artworkArray={this.props.allArtwork}
             handleArtworkClick={this.handleArtworkClick}

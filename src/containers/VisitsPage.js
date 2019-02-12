@@ -5,7 +5,7 @@ class VisitsPage extends Component {
   render() {
     return (
       <div>
-        <h1>Visits Page</h1>
+        <h1>Past Visits</h1>
         <VisitsList currentUser={this.props.currentUser} />
       </div>
     );

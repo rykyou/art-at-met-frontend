@@ -45,18 +45,18 @@ class ArtDetails extends React.Component {
     const { currentArtwork } = this.props
     return (
 
-      <div class="ui fluid card">
-        <div class="image">
+      <div className="ui fluid card">
+        <div className="image">
           <img src={currentArtwork.img_small} alt={currentArtwork.title} />
         </div>
-        <div class="content">
-          <h1 class="ui header spacing">{currentArtwork.title}</h1>
+        <div className="content">
+          <h1 className="ui header spacing">{currentArtwork.title}</h1>
 
           {currentArtwork.artist_name ?
-            <h3 class="ui header spacing">{currentArtwork.artist_name} ({currentArtwork.artist_bio})</h3>
+            <h3 className="ui header spacing">{currentArtwork.artist_name} ({currentArtwork.artist_bio})</h3>
           : null }
 
-          <h3 class="ui dividing header"></h3>
+          <h3 className="ui dividing header"></h3>
 
           <h4>Date: {currentArtwork.object_date}</h4>
           <h4>Medium: {currentArtwork.medium}</h4>
@@ -64,7 +64,7 @@ class ArtDetails extends React.Component {
           <h4>Classification: {currentArtwork.classification}</h4>
 
         </div>
-        <div class="extra content">
+        <div className="extra content">
           {this.buttons()}
         </div>
       </div>
