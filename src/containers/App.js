@@ -117,20 +117,19 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(editedVisit => {
-        // console.log(editedVisit)
-        // console.log(this.props.allVisits)
-        let copyOfAllVisits = [...this.state.allVisits]
-        copyOfAllVisits[editedVisit.id] = editedVisit
+
+        let copyOfAllVisits = JSON.parse(JSON.stringify(this.state.allVisits))
+        let index = copyOfAllVisits.findIndex(visit => visit.id === editedVisit.id)
+        copyOfAllVisits[index] = editedVisit
         console.log(this.state.allVisits)
         console.log(copyOfAllVisits)
+        
 
-        // let copyOfVisitToEdit = [...visitToEdit]
-        // copyOfVisitToEdit
+        let copyOfCurrentUser = JSON.parse(JSON.stringify(this.state.currentUser))
+        copyOfCurrentUser['visits'] = copyOfAllVisits
+
         this.setState({
-          currentUser: {
-            ...this.state.currentUser,
-            visits: copyOfAllVisits
-          }
+          currentUser: copyOfCurrentUser
         })
       })
   }
