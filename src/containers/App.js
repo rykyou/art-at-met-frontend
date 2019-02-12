@@ -11,13 +11,13 @@ import ProfilePage from './ProfilePage'
 class App extends Component {
   state = {
     allArtwork: [],
-    currentUser: {},
-    allVisits: []
+    currentUser: {}
+    // allVisits: []
   }
 
   componentDidMount() {
     this.getAllArtwork()
-    this.getAllVisits()
+    // this.getAllVisits()
     this.getCurrentUser()
   }
 
@@ -31,15 +31,15 @@ class App extends Component {
     })
   }
 
-  getAllVisits = () => {
-    fetch('http://localhost:3000/api/v1/visits')
-    .then(res => res.json())
-    .then(data => {
-      this.setState({
-        allVisits: data
-      })
-    })
-  }
+  // getAllVisits = () => {
+  //   fetch('http://localhost:3000/api/v1/visits')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     this.setState({
+  //       allVisits: data
+  //     })
+  //   })
+  // }
 
   getCurrentUser = () => {
     fetch(`http://localhost:3000/api/v1/users`)
@@ -117,19 +117,12 @@ class App extends Component {
       })
       .then(res => res.json())
       .then(editedVisit => {
-
-        let copyOfAllVisits = JSON.parse(JSON.stringify(this.state.allVisits))
-        let index = copyOfAllVisits.findIndex(visit => visit.id === editedVisit.id)
-        copyOfAllVisits[index] = editedVisit
-        console.log(this.state.allVisits)
-        console.log(copyOfAllVisits)
-        
-
-        let copyOfCurrentUser = JSON.parse(JSON.stringify(this.state.currentUser))
-        copyOfCurrentUser['visits'] = copyOfAllVisits
+        let copyOfUser = JSON.parse(JSON.stringify(this.state.currentUser))
+        let index = copyOfUser.visits.findIndex(visit => visit.id === editedVisit.id)
+        copyOfUser.visits[index] = editedVisit
 
         this.setState({
-          currentUser: copyOfCurrentUser
+          currentUser: copyOfUser
         })
       })
   }
@@ -150,7 +143,8 @@ class App extends Component {
 
         <Route exact path='/visits/:visitId/edit' render={(props) => {
             const visitIdInUrl = parseInt(props.match.params.visitId)
-            let visit = this.state.allVisits.find(visitObj => visitObj.id === visitIdInUrl ) //visitObj.id === visitIdInUrl})
+            let visit = this.state.currentUser.visits.find(visitObj => visitObj.id === visitIdInUrl )
+
             // console.log('visit:', visit)
             return (<EditVisitPage
               allArtwork={this.state.allArtwork}
