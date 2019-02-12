@@ -129,9 +129,22 @@ class App extends Component {
   handleRemoveArtwork = (artworkObj, visitId) => {
     console.log('attempting to REMOVE', artworkObj, "from user's list")
 
-    // fetch(`http://localhost:3000/api/v1/visits/${visitId}/artworks/${artworkObj.id}`, {
-    //     method: 'DELETE'
-    // })
+    fetch(`http://localhost:3000/api/v1/visits/${visitId}/artworks/${artworkObj.id}`, {
+        method: 'DELETE'
+    })
+
+    let copyOfUser = JSON.parse(JSON.stringify(this.state.currentUser))
+    let visitIndex = copyOfUser.visits.findIndex(visit => visit.id === visitId)
+    let copyOfArtworks = JSON.parse(JSON.stringify(copyOfUser.visits[visitIndex].artworks))
+
+    let artworkToDeleteIndex = copyOfArtworks.findIndex(artwork => artwork.id === artworkObj.id)
+    copyOfArtworks.splice(artworkToDeleteIndex, 1)
+
+    copyOfUser.visits[visitIndex] = copyOfArtworks
+    debugger
+    this.setState({
+      currentUser: copyOfUser
+    })
 
   }
 

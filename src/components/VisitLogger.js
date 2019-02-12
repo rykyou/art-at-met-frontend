@@ -61,7 +61,7 @@ class VisitLogger extends React.Component {
                 onChange={this.handleDateChange}
               />
 
-            <Dropdown placeholder={<i class="clock outline icon"></i>}
+              <Dropdown placeholder={<i class="clock outline icon"></i>}
                 fluid
                 selection
                 options={this.timeOptions}
@@ -76,19 +76,5 @@ class VisitLogger extends React.Component {
     )
   }
 }
-
-// options={friendOptions}
-// <div>
-// <h3>Filter Search</h3>
-// <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-// <Form.Group widths="equal">
-// <Form.Input fluid label="Name" placeholder="Name" name="name" />
-// <Form.Input fluid label="hp" placeholder="hp" name="hp" />
-// <Form.Input fluid label="Front Image URL" placeholder="url" name="frontUrl" />
-// <Form.Input fluid label="Back Image URL" placeholder="url" name="backUrl" />
-// </Form.Group>
-// <Form.Button>Submit</Form.Button>
-// </Form>
-// </div>
 
 export default VisitLogger

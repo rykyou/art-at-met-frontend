@@ -21,7 +21,7 @@ class SearchContainer extends Component {
   render() {
     let filteredArtworks = this.props.artworkArray.filter(artwork => artwork.title.toLowerCase().includes(this.state.searchTitle.toLowerCase()))
     filteredArtworks = filteredArtworks.filter(artwork => artwork.artist_name.toLowerCase().includes(this.state.searchArtist.toLowerCase()))
-    
+
     return (
       <div>
         <h1>SearchContainer</h1>
@@ -32,10 +32,10 @@ class SearchContainer extends Component {
                 <Form.Input label="Filter by Title:" placeholder="Artist Name" name="searchTitle" />
                 <Form.Input label="Filter by Artist Name:" placeholder="Artist Name" name="searchArtist" />
               </Form.Group>
-              <Form.Button>Search</Form.Button>
             </Form>
           </Grid.Row>
         </Grid>
+        
         <h3>All art:</h3>
         <div className="horizontal-scroll">
           <AllArtworksList
