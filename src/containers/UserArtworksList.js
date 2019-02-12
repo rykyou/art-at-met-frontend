@@ -12,8 +12,7 @@ class UserArtworksList extends React.Component {
   render() {
     return (
       <div>
-        <h1 class="ui header">Artworks Visited on: {this.formattedDate(this.props.currentVisit.date)}</h1>
-        <h3 class="ui header">{this.props.currentVisit.time_of_day}</h3>
+        <h1 class="ui header">Artworks Visited on {this.formattedDate(this.props.currentVisit.date)}  | |  {this.props.currentVisit.time_of_day}</h1>
         <div className="ui link cards">
           {this.props.artworkArray.map(art => <ArtCard
             key={art.id}
