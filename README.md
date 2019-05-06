@@ -1,5 +1,5 @@
 # Art At Met
 
-A journaling and art discovery tool to enrich visits to the Metropolitan Museum of Art in NYC. 
+Frontend repo for a journaling and art discovery application 
 
 Backend Repo: https://github.com/rykyou/art-at-met-backend
