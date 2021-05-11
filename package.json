@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "keyboard-key": "^1.0.4",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "prop-types": "^15.7.1",
     "react": "^16.8.1",
